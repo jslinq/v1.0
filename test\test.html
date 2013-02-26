@@ -1,7 +1,7 @@
 <doctype html>
 <html>
   <head>
-		<script language='javascript' src='../src/jsLINQ-min.js'> </script>
+		<script language='javascript' src='../src/jsLinq-min.js'> </script>
         
 		<script language='javascript' src='json2.js'> </script>
 		<script language='javascript' src='jquery.js'> </script>
@@ -21,7 +21,7 @@
 
 			var JSLINQTester = {
 			    Aggregate: function () {
-			        var sum = lnq.Aggregate(
+			        var sum = lnq.aggregate(
                                     function (v, accumulator) {
                                         return accumulator ? v.stock + accumulator : v.stock;
                                     },
@@ -31,79 +31,63 @@
 			    },
 
 			    All: function () {
-			        var matches = lnq.All(function (v, k) { return v.stock < 10; });
+			        var matches = lnq.all(function (v, k) { return v.stock < 10; });
 			        log(matches);
 			    },
 
 			    Any: function () {
-			        var matches = lnq.Any(function (v, k) { return v.stock < 5; });
+			        var matches = lnq.any(function (v, k) { return v.stock < 5; });
 			        log(matches);
 			    },
 
 			    Average: function () {
-			        var avg = lnq.Average(function (v) { return v.stock; });
+			        var avg = lnq.average(function (v) { return v.stock; });
 			        log(avg);
 			    },
 
-			    /*
-			    Cast: function () {
-			    var result = lnq.Cast(typeof 0); //Int cast
-			    log(result);
-			    },
-			    */
 
 			    Concat: function () {
-			        var result = lnq.Concat(["Test"]);
+			        var result = lnq.concat(["Test"]);
 			        log(result);
 			    },
 
 			    Contains: function () {
-			        var result = lnq.Contains(lnq.ElementAt(10));
+			        var result = lnq.contains(lnq.elementAt(10));
 			        log(result);
 			    },
 
 			    Count: function () {
-			        var result = lnq.Count(function (v, k) { return v.name.indexOf("Item #1") != -1 ? true : false; });
-			        log(result);
-			    },
-
-			    DefaultIfEmpty: function () {
-			        var result = lnq.DefaultIfEmpty();
+			        var result = lnq.count(function (v, k) { return v.name.indexOf("Item #1") != -1 ? true : false; });
 			        log(result);
 			    },
 
 			    Distinct: function () {
-			        var result = lnq.Distinct();
+			        var result = lnq.distinct();
 			        log(result);
 			    },
 
 			    ElementAt: function () {
-			        var result = lnq.ElementAt(86);
+			        var result = lnq.elementAt(86);
 			        log(result);
 			    },
 
 			    GroupBy: function () {
-			        var result = lnq.GroupBy(function (v) { return (v.id % 2) ? 'Odd' : 'Even' });
-			        log(result);
-			    },
-
-			    ElementAtOrDefault: function () {
-			        var result = lnq.ElementAtOrDefault(-1);
+			        var result = lnq.groupBy(function (v) { return (v.id % 2) ? 'Odd' : 'Even' });
 			        log(result);
 			    },
 
 			    IsEmpty: function () {
-			        var result = lnq.ElementAtOrDefault(-1).IsEmpty();
+			        var result = lnq.isEmpty();
 			        log(result);
 			    },
 
 			    Except: function () {
-			        var result = lnq.Except([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30], function (v, k) { return true; });
+			        var result = lnq.except([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30], function (v, k) { return true; });
 			        log(result);
 			    },
 
 			    Select: function () {
-			        var result = lnq.Select(
+			        var result = lnq.select(
                                                 function (v) { return v.stock ? (v.stock > 100 ? true : false) : false; },
                                                 function (v) { return v.vendors; }
                                            );
@@ -112,13 +96,13 @@
 				
 				OrderBy: function()
 				{
-					var result = lnq.OrderBy(function(v) { return v.stock; }).Select(null, function(v) { return v.stock; });
+					var result = lnq.orderBy(function(v) { return v.stock; }).select(null, function(v) { return v.stock; });
 			        log(result);
 				},
 				
 				OrderByDescending: function()
 				{
-					var result = lnq.OrderByDescending(function(v) { return v.stock; }).Select(null, function(v) { return v.stock; });
+					var result = lnq.orderByDescending(function(v) { return v.stock; }).select(null, function(v) { return v.stock; });
 			        log(result);
 				},
 				
@@ -126,9 +110,9 @@
 			        var _data = [];
 			        for (var i = 0; i < 100000; i++)
 			            _data.push(i);
-			        var lnQ = JSLINQ(_data);
+			        var lnQ = Q(_data);
 
-			        var result = lnQ.Select(function (v, k) { return (v % 19999 == 0); });
+			        var result = lnQ.select(function (v, k) { return (v % 19999 == 0); });
 
 			        log(result);
 			    }
@@ -180,7 +164,7 @@
 					//data.push(i);
 				}
 				
-			    lnq = JSLINQ(data);
+			    lnq = Q(data);
 			    $("#sampledata").val(" Array of " + typeof data[0] + "(s) 0 to " + data.length + "\n Object #1: " + JSON.stringify(data[0]));
 			    $("#info").html("Total Records: " + $("#samplesize").val());
 			}
@@ -189,10 +173,10 @@
 
 			    InitializeSamples();
 			    $("#testcase").append($("<option value=''>-- Select Case --</option>"));
-			    JSLINQ(JSLINQTester).Select(
-                                            function (value) { return typeof value == 'function' },
+			    Q.from(JSLINQTester).select(
+                                            function (value) { return typeof JSLINQTester[value] == 'function' },
                                             function (value, key) {
-                                                $("#testcase").append($("<option value='" + key + "'>" + key + "</option>"));
+                                                $("#testcase").append($("<option value='" + value + "'>" + value + "</option>"));
                                                 return null;
                                             }
                                             );
