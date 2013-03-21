@@ -7,11 +7,11 @@ It is a initial verson of jslinq and we welcome your feedbacks / bugs to muruges
 
 Initialize LINQ
 ===============
-In order to make use of LINQ, first we should cast raw object or JSON to a query able object collection. Let’s u see different types of  initializer with an examples.
+In order to make use of LINQ, first we should cast raw object or JSON to a query able object collection. Let’s us see different types of  initializer with an examples.
 
 Example 1
 =========
-//Beginners example, probably it won’t really require explanation but for understanding of JSLINQ, will start from hear.
+//Beginners example, probably it won’t really require explanation but for understanding of JSLINQ, will start from here.
 
 // string to LINQ
 
@@ -25,8 +25,8 @@ Example 1
 
     var  arrayQ = Q([0,1,2,3,4,5,6,7,8,9,0]); // [0,1,2,3,4,5,6,7,8,9,0]);
 
-Guys! Ready to play with JSLINQ.
-Note: Easy of understanding I have kept the LINQ variables names with type of data it contains.
+Guys! now we are ready to play with JSLINQ.
+Note: Easy of understanding I have kept the LINQ variables names with type of data it has.
 
 
 API Usage
