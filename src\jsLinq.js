@@ -1164,9 +1164,14 @@
 	            return -1;
 
 	        var result = -1;
-	        for (var k = 0; k < this.$.length; k++) {
-	            if (predicate.call(this, this.$[k], k) !== false)
-	                return k
+	        for (var k = 0; k < this.$.length; k++) 
+            {
+                if (typeof predicate == Q.t.func)
+                {    if (predicate.call(this, this.$[k], k) !== false)
+	                    return k
+                }
+                else if(this.isEqual(this.$[k], predicate))
+                    return k;
 	        }
 	        return -1;
 	    },
