@@ -7,15 +7,15 @@ It is a initial verson of jslinq and we welcome your feedbacks / bugs to muruges
 
 Initialize LINQ
 ===============
-In order to make use of LINQ, first we should cast raw object or JSON to a query able object collection. Let’s us see different types of  initializer with an examples.
+In order to make use of LINQ, first we should cast raw object or JSON to a queryable object collection. Let’s us see different types of  initializer with an examples.
 
 Example 1
 =========
-//Beginners example, probably it won’t really require explanation but for understanding of JSLINQ, will start from here.
+//Beginners example for understanding of JSLINQ, will start from here (Skip Example #1, those who are expert in JavaScript).
 
 // string to LINQ
 
-    var  stringQ = Q(“jshibernate”); // ‘j’,’s’,’h’,’I’,’b’,’e’,’r’,’n’,’a’,’t’,’e’];
+    var  stringQ = Q(“jshibernate”); // [‘j’,’s’,’h’,’I’,’b’,’e’,’r’,’n’,’a’,’t’,’e’];
 
 //JSON objects to LINQ
 
@@ -50,16 +50,25 @@ Here predicator seems very boring right! Let me rewrite same in different way
     var  vowelsQ = Q([‘a’,’e’,’i’,’o’,’u’]);
 
     stringQ.select(
-                function(v) { return (return vowelsQ.contains (v); }, //predicate just return true to pass or false to fail
+                function(v) { return vowelsQ.contains (v); }, //predicate just return true to pass or false to fail
                 function(v) { return v } //selector
     ) ;
     
+//Result will be
+    
+     {$:[ 
+        'i',
+        'e',
+        'a',
+        'e'
+    ]};
 Example 3:
 ==========
 
     stringQ.groupBy(
               function(v) { 
-                              return vowelsQ.contains (v) ? ‘I am vowels’: ‘I am not vowels’; //a key selector. Just return grouping key
+                              //a key selector. Just return grouping key
+                              return vowelsQ.contains (v) ? ‘I am vowels’: ‘I am not vowels’;
                           } 
                 );
     
