@@ -28,7 +28,6 @@ Example 1
 Guys! now we are ready to play with JSLINQ.
 Note: Easy of understanding I have kept the LINQ variables names with type of data it has.
 
-
 API Usage
 =========
 Example 2
@@ -36,7 +35,7 @@ Example 2
 I wanted to know the vowels in the string ‘jshibernate’. The classic way of doing is first I will iterate the each char in the string then will check and display.
 But those who are lazy to write loops and interested to call API get job done! Like me I used to Google to find out is there any open source libraries are there to finish my job if not then my life become miserable 
 
-Ok, let’s us the example instead deviating the topic.
+Ok, let’s us see the example instead of deviating the topic.
 
     stringQ.select(
                 function(v) { return (v == ‘a’  || v == ‘e’ || v == ‘i’ || v == ‘o’ || v == ‘u’); }, //predicate just return true to pass or false to fail
@@ -57,11 +56,11 @@ Here predicator seems very boring right! Let me rewrite same in different way
 //Result will be
     
      {$:[ 
-        'i',
-        'e',
-        'a',
-        'e'
-    ]};
+            'i',
+            'e',
+            'a',
+            'e'
+        ]};
 Example 3:
 ==========
 
